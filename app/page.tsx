@@ -18,16 +18,16 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 text-white pt-14">
       {/* Sticky header with only logo and button fixed */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 sm:px-6 py-3 bg-slate-950/90 backdrop-blur-sm border-b border-slate-800/50">
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-3 sm:px-6 py-2 sm:py-3 bg-slate-950/90 backdrop-blur-sm border-b border-slate-800/50">
         <div className="relative inline-block overflow-hidden rounded-full p-[1.5px]">
           <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
           <div className="relative inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-4 sm:px-6 py-2 text-white">
-            <div className="text-lg sm:text-xl font-medium">Talent Assist</div>
+            <div className="text-base sm:text-xl font-medium">Talent Assist</div>
           </div>
         </div>
 
-        <div className="py-2 px-6 bg-purple-600 hover:bg-purple-700 transition-colors rounded-full">
-          <button className="text-white font-medium" onClick={() => setIsContactFormOpen(true)}>
+        <div className="py-1.5 sm:py-2 px-4 sm:px-6 bg-purple-600 hover:bg-purple-700 transition-colors rounded-full">
+          <button className="text-white font-medium text-sm sm:text-base" onClick={() => setIsContactFormOpen(true)}>
             Start Hiring Now
           </button>
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
       </BackgroundCircles>
 
       {/* Logo Carousel Section - transparent to show hero glow */}
-      <div className="relative z-10 py-0 -mt-16 bg-transparent">
+      <div className="relative z-10 py-0 -mt-10 sm:-mt-16 bg-transparent">
         <div className="container mx-auto px-4 py-2 sm:py-4 border-b border-slate-800/50 bg-transparent">
           <h3 className="text-xl sm:text-2xl font-medium text-center text-white mb-3 sm:mb-5">Trusted By</h3>
           <LogoCarousel />
@@ -55,7 +55,7 @@ export default function Home() {
             centered
           />
 
-          <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 max-w-7xl mx-auto pb-8 sm:pb-12">
+          <div className="grid gap-2 sm:gap-4 md:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 max-w-7xl mx-auto pb-6 sm:pb-12 overflow-x-hidden">
             <PainPointCard
               statValue={69}
               statSuffix="%"
@@ -126,7 +126,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <SectionBackground variant="primary">
         <div className="container mx-auto px-4 py-12 sm:py-16">
-          <div className="flex flex-col md:flex-row md:items-center gap-8 max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center gap-6 sm:gap-8 max-w-5xl mx-auto">
             <div className="md:w-1/2">
               <h3 className="text-2xl sm:text-3xl font-medium text-white mb-4">Talent Assist</h3>
               <p className="text-slate-300 text-sm sm:text-base mb-6">

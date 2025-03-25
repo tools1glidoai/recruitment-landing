@@ -47,7 +47,7 @@ export function Chart({
       case "area":
         return (
           <ResponsiveContainer width="100%" height={height}>
-            <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <AreaChart data={data} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
               <defs>
                 {yKeys.map((item) => (
                   <linearGradient key={item.key} id={`color-${item.key}`} x1="0" y1="0" x2="0" y2="1">
@@ -57,8 +57,8 @@ export function Chart({
                 ))}
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey={xKey} stroke="#888" />
-              <YAxis stroke="#888" />
+              <XAxis dataKey={xKey} stroke="#888" tick={{ fontSize: 10 }} />
+              <YAxis stroke="#888" tick={{ fontSize: 10 }} />
               <Tooltip content={<ChartTooltip />} />
               <Legend content={<ChartLegend />} />
               {yKeys.map((item) => (
@@ -78,10 +78,10 @@ export function Chart({
       case "bar":
         return (
           <ResponsiveContainer width="100%" height={height}>
-            <BarChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <BarChart data={data} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey={xKey} stroke="#888" />
-              <YAxis stroke="#888" />
+              <XAxis dataKey={xKey} stroke="#888" tick={{ fontSize: 10 }} />
+              <YAxis stroke="#888" tick={{ fontSize: 10 }} />
               <Tooltip content={<ChartTooltip />} />
               <Legend content={<ChartLegend />} />
               {yKeys.map((item) => (
@@ -93,10 +93,10 @@ export function Chart({
       case "line":
         return (
           <ResponsiveContainer width="100%" height={height}>
-            <LineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <LineChart data={data} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-              <XAxis dataKey={xKey} stroke="#888" />
-              <YAxis stroke="#888" />
+              <XAxis dataKey={xKey} stroke="#888" tick={{ fontSize: 10 }} />
+              <YAxis stroke="#888" tick={{ fontSize: 10 }} />
               <Tooltip content={<ChartTooltip />} />
               <Legend content={<ChartLegend />} />
               {yKeys.map((item) => (

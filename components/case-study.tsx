@@ -231,7 +231,7 @@ export function CaseStudy() {
   }
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-3 sm:px-4">
       <SectionHeading
         title="Proven Results: AI-Powered Hiring in Action"
         subtitle="Real-world case studies showing how our AI transforms recruitment processes and outcomes."
@@ -241,13 +241,13 @@ export function CaseStudy() {
       </SectionHeading>
 
       {/* Case Study Introduction */}
-      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 md:p-6 max-w-5xl mx-auto border border-slate-700/50 mb-6">
+      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 md:p-6 max-w-5xl mx-auto border border-slate-700/50 mb-4 sm:mb-6 overflow-hidden">
         <h3 className="text-lg font-medium text-white text-center mb-3">
           Case Study: Social Media Content Creator Role
         </h3>
 
         {/* Challenge and Solution cards - side by side on mobile */}
-        <div className="flex flex-row gap-3 mb-3 overflow-x-auto hide-scrollbar pb-1">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-3 pb-1">
           <div className="bg-slate-900/70 p-3 rounded-lg border border-slate-800/50 min-w-[200px] flex-1">
             <h4 className="text-white font-medium mb-2 flex items-center text-sm">
               <AlertCircle className="mr-2 h-4 w-4 text-amber-400 flex-shrink-0" /> Challenge
@@ -269,7 +269,7 @@ export function CaseStudy() {
           </div>
         </div>
 
-        <div className="flex gap-2 justify-between">
+        <div className="flex gap-2 justify-between overflow-x-hidden">
           <div className="bg-slate-900/70 p-2 rounded-lg border border-slate-800/50 text-center flex-1">
             <div className="text-green-400 text-base font-bold">83%</div>
             <div className="text-slate-300 text-[10px]">Time Saved</div>
@@ -285,17 +285,17 @@ export function CaseStudy() {
         </div>
       </div>
 
-      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-3 md:p-8 max-w-5xl mx-auto border border-slate-700/50">
-        <div className="grid md:grid-cols-4 gap-3 md:gap-6">
+      <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-2 sm:p-3 md:p-8 max-w-5xl mx-auto border border-slate-700/50 overflow-hidden">
+        <div className="grid md:grid-cols-4 gap-2 sm:gap-3 md:gap-6">
           {/* Tabs - Horizontal for mobile, Vertical for desktop */}
           <div className="md:col-span-1">
             {isMobile ? (
-              <div className="flex overflow-x-auto pb-2 space-x-1 mb-3 hide-scrollbar">
+              <div className="flex flex-wrap pb-2 gap-1 mb-2 sm:mb-3">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-2 py-1.5 whitespace-nowrap rounded-lg text-center transition-all text-xs ${
+                    className={`px-2 py-1.5 whitespace-nowrap rounded-lg text-center transition-all text-xs mb-1 ${
                       activeTab === tab.id
                         ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
                         : "bg-slate-900/50 hover:bg-slate-900/70 text-slate-300 border border-slate-800/50"
@@ -311,7 +311,7 @@ export function CaseStudy() {
           </div>
 
           {/* Right Side: Content */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 overflow-x-auto max-w-full">
             {activeTab === "performance" && (
               <PerformanceTab
                 openModal={openModal}
@@ -394,54 +394,58 @@ function PerformanceTab({
   qualityImprovementData: any[]
 }) {
   const fullHiringMetricsChart = (
-    <div className="space-y-6">
-      <p className="text-slate-300 text-sm sm:text-base">
+    <div className="space-y-4 sm:space-y-6 overflow-x-hidden w-full">
+      <p className="text-slate-300 text-xs sm:text-sm md:text-base">
         This dashboard shows the improvement in key hiring metrics after implementing AI-powered recruitment. Time to
         hire decreased by 83%, and quality of hire increased by 16%.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-slate-900/70 rounded-lg p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-          <h3 className="text-white text-lg mb-4 font-medium flex items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 overflow-x-hidden w-full">
+        <div className="bg-slate-900/70 rounded-lg p-3 sm:p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+          <h3 className="text-white text-base sm:text-lg mb-2 sm:mb-4 font-medium flex items-center">
             <Clock className="w-5 h-5 mr-2 text-purple-400" /> Time to Hire Comparison
           </h3>
-          <div className="relative group">
-            <Chart
-              data={timeSavedData}
-              type="bar"
-              xKey="name"
-              yKeys={[{ key: "value", name: "Days", color: "#8884d8" }]}
-              height={300}
-            />
+          <div className="relative group overflow-hidden">
+            <div className="overflow-x-auto -mx-3 px-3 pb-1">
+              <Chart
+                data={timeSavedData}
+                type="bar"
+                xKey="name"
+                yKeys={[{ key: "value", name: "Days", color: "#8884d8" }]}
+                height={isMobile ? 250 : 300}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div className="mt-4 text-center bg-slate-800/50 p-3 rounded-lg border border-slate-700/30">
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
+          <div className="mt-2 sm:mt-4 text-center bg-slate-800/50 p-2 sm:p-3 rounded-lg border border-slate-700/30">
+            <div className="text-xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
               -83%
             </div>
-            <p className="text-slate-300 text-sm">Reduction in hiring time</p>
+            <p className="text-slate-300 text-xs sm:text-sm">Reduction in hiring time</p>
           </div>
         </div>
 
-        <div className="bg-slate-900/70 rounded-lg p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-          <h3 className="text-white text-lg mb-4 font-medium flex items-center">
+        <div className="bg-slate-900/70 rounded-lg p-3 sm:p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+          <h3 className="text-white text-base sm:text-lg mb-2 sm:mb-4 font-medium flex items-center">
             <TrendingUp className="w-5 h-5 mr-2 text-green-400" /> Quality of Hire Improvement
           </h3>
-          <div className="relative group">
-            <Chart
-              data={qualityImprovementData}
-              type="line"
-              xKey="month"
-              yKeys={[{ key: "quality", name: "Quality Score", color: "#82ca9d" }]}
-              height={300}
-            />
+          <div className="relative group overflow-hidden">
+            <div className="overflow-x-auto -mx-3 px-3 pb-1">
+              <Chart
+                data={qualityImprovementData}
+                type="line"
+                xKey="month"
+                yKeys={[{ key: "quality", name: "Quality Score", color: "#82ca9d" }]}
+                height={isMobile ? 250 : 300}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
-          <div className="mt-4 text-center bg-slate-800/50 p-3 rounded-lg border border-slate-700/30">
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
+          <div className="mt-2 sm:mt-4 text-center bg-slate-800/50 p-2 sm:p-3 rounded-lg border border-slate-700/30">
+            <div className="text-xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
               +16%
             </div>
-            <p className="text-slate-300 text-sm">Improvement in hire quality</p>
+            <p className="text-slate-300 text-xs sm:text-sm">Improvement in hire quality</p>
           </div>
         </div>
       </div>
@@ -467,7 +471,7 @@ function PerformanceTab({
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
         </div>
 
-        <div className="mt-6 grid grid-cols-3 gap-4">
+        <div className="mt-3 sm:mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 overflow-x-hidden w-full">
           {candidateScoreComparisonData.slice(0, 3).map((candidate, index) => (
             <div
               key={index}
@@ -519,19 +523,21 @@ function PerformanceTab({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-slate-900/70 rounded-lg p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-          <h3 className="text-white text-lg mb-4 font-medium flex items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 overflow-x-hidden w-full">
+        <div className="bg-slate-900/70 rounded-lg p-3 sm:p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+          <h3 className="text-white text-base sm:text-lg mb-2 sm:mb-4 font-medium flex items-center">
             <PieChart className="w-5 h-5 mr-2 text-pink-400" /> Candidate Status Distribution
           </h3>
-          <div className="relative group">
-            <Chart
-              data={statusDistributionData}
-              type="pie"
-              xKey="name"
-              yKeys={[{ key: "value", name: "Count", color: "#82ca9d" }]}
-              height={300}
-            />
+          <div className="relative group overflow-hidden">
+            <div className="overflow-x-auto -mx-3 px-3 pb-1">
+              <Chart
+                data={statusDistributionData}
+                type="pie"
+                xKey="name"
+                yKeys={[{ key: "value", name: "Count", color: "#82ca9d" }]}
+                height={isMobile ? 250 : 300}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </div>
           <div className="mt-4 grid grid-cols-3 gap-2">
@@ -549,8 +555,8 @@ function PerformanceTab({
           </div>
         </div>
 
-        <div className="bg-slate-900/70 rounded-lg p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
-          <h3 className="text-white text-lg mb-4 font-medium flex items-center">
+        <div className="bg-slate-900/70 rounded-lg p-3 sm:p-6 border border-slate-800/50 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300">
+          <h3 className="text-white text-base sm:text-lg mb-2 sm:mb-4 font-medium flex items-center">
             <BarChart className="w-5 h-5 mr-2 text-amber-400" /> Top Skills Distribution
           </h3>
           <div className="relative group">
@@ -1266,7 +1272,7 @@ function EvaluationTab({
               openModal(
                 "All Candidates",
                 <div className="space-y-4">
-                  <p className="text-slate-300 text-sm">Click on a candidate to view their detailed profile.</p>
+                  <p className="text-slate-300 text-xs sm:text-sm">Click on a candidate to view their detailed profile.</p>
                   {filteredCandidateData.map((candidate) => (
                     <div key={candidate.id} className="w-full">
                       <div
@@ -1401,7 +1407,7 @@ function ShortlistedTab({
               </div>
               <div className="text-green-400 text-sm px-2 py-1 rounded bg-green-900/30">Top 5%</div>
             </div>
-            <p className="text-slate-300 text-sm">
+            <p className="text-slate-300 text-xs sm:text-sm">
               This candidate is an exceptional match for the Social Media Content Creator position, with strong creative
               skills and relevant experience.
             </p>
@@ -1505,7 +1511,7 @@ function ShortlistedTab({
 
               <div className="bg-slate-900/70 p-3 rounded-lg border border-slate-800/50">
                 <h5 className="text-white text-sm font-medium mb-2">Education</h5>
-                <p className="text-slate-300 text-sm">{candidate.education}</p>
+                <p className="text-slate-300 text-xs sm:text-sm">{candidate.education}</p>
               </div>
 
               <div className="bg-slate-900/70 p-3 rounded-lg border border-slate-800/50">
@@ -1639,7 +1645,7 @@ function ShortlistedTab({
                   <Mail className="text-blue-400 h-5 w-5 shrink-0" />
                   <div>
                     <h5 className="text-white text-sm font-medium">Email</h5>
-                    <p className="text-slate-300 text-sm">{candidate.email}</p>
+                    <p className="text-slate-300 text-xs sm:text-sm">{candidate.email}</p>
                   </div>
                 </div>
               )}
@@ -1649,7 +1655,7 @@ function ShortlistedTab({
                   <Phone className="text-green-400 h-5 w-5 shrink-0" />
                   <div>
                     <h5 className="text-white text-sm font-medium">Phone</h5>
-                    <p className="text-slate-300 text-sm">{candidate.phone}</p>
+                    <p className="text-slate-300 text-xs sm:text-sm">{candidate.phone}</p>
                   </div>
                 </div>
               )}
@@ -1658,7 +1664,7 @@ function ShortlistedTab({
                 <Briefcase className="text-purple-400 h-5 w-5 shrink-0" />
                 <div>
                   <h5 className="text-white text-sm font-medium">Availability</h5>
-                  <p className="text-slate-300 text-sm">{candidate.availability}</p>
+                  <p className="text-slate-300 text-xs sm:text-sm">{candidate.availability}</p>
                 </div>
               </div>
             </div>
@@ -1671,7 +1677,7 @@ function ShortlistedTab({
                 <CheckCircle className="text-green-400 h-5 w-5" />
                 <span className="text-green-400 font-medium">Highly Recommended for Hire</span>
               </div>
-              <p className="text-slate-300 text-sm">
+              <p className="text-slate-300 text-xs sm:text-sm">
                 Based on comprehensive analysis of resume, LinkedIn profile, and interview performance, this candidate
                 is an exceptional match for the Social Media Content Creator position with a{" "}
                 {candidate.aiMatch.toFixed(1)}/10 compatibility score.
