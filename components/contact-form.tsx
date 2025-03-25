@@ -212,12 +212,14 @@ export function ContactForm({
                     <SelectTrigger className="bg-slate-800/50 border-slate-700 text-white">
                       <SelectValue placeholder="+91" />
                     </SelectTrigger>
-                    <SelectContent className="max-h-[200px]">
-                      {countryCodes.map((country) => (
-                        <SelectItem key={country.code} value={country.code}>
-                          {country.code} ({country.country})
-                        </SelectItem>
-                      ))}
+                    <SelectContent>
+                      <div className="max-h-[200px] overflow-y-auto">
+                        {countryCodes.map((country) => (
+                          <SelectItem key={country.code} value={country.code}>
+                            {country.code} ({country.country})
+                          </SelectItem>
+                        ))}
+                      </div>
                     </SelectContent>
                   </Select>
                 </div>
